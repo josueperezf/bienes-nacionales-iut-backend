@@ -22,6 +22,24 @@ class UnidadAdministrativa extends Model
         (!empty($parametros['direction']) && $parametros['direction'] == 'asc' )? $direction = $parametros['direction'] : $direction='desc';
         (!empty($parametros['pageSize'])) ? $pageSize=''.$parametros['pageSize'] : $pageSize ='100000000000';
         if(!empty($parametros['todos'])) $todos=true;
+        // !!IMPORTANTE, para cuando cree esto no sabia que laravel tiene el when que evalua si la variable existe agrega la condicion sql, si no lo pone, ejemlo
+
+        /**
+         * si existe el termino, agrega ese termino al where
+         * si existe categoria_id, agrega al where, si no el where no tendra esa condicion
+         * $vacantes = Vacante::
+                when($termino, function($q) {
+                    $q->where('titulo', 'LIKE', '%'.$termino.'%');
+                })->when($categoria_id, function($q) {
+                    $q->where('categoria_id', $categoria_id);
+                })
+                ->when($salario_id, function($q) {
+                    $q->where('salario_id', $salario_id);
+                })
+            ->get();
+            //->toSql();
+         */
+
         if($todos){
             return $query
                          ->withTrashed()
