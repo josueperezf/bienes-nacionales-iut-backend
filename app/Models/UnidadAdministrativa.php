@@ -29,7 +29,8 @@ class UnidadAdministrativa extends Model
          * si existe categoria_id, agrega al where, si no el where no tendra esa condicion
          * $vacantes = Vacante::
                 when($termino, function($q) {
-                    $q->where('titulo', 'LIKE', '%'.$termino.'%');
+                    $q->where('titulo', 'LIKE', '%'.$termino.'%')
+                      ->orWhere('empresa', 'LIKE', '%'.$termino.'%');
                 })->when($categoria_id, function($q) {
                     $q->where('categoria_id', $categoria_id);
                 })
