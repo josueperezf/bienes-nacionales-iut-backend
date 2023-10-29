@@ -30,7 +30,7 @@ class RequestBienUpdate extends FormRequest
             'marca_id'          =>'required|integer',
             'codigo'            => 'required|min:2|max:100|unique:biens,codigo,'.$this->route->__get('bien')->id,
             'serial'            =>'required|min:2|max:20',
-            'monto'             =>'required|min:2|max:20'
+            'monto'             =>'required|min:2|max:10'
         ];
     }
 }

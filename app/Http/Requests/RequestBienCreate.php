@@ -29,7 +29,7 @@ class RequestBienCreate extends FormRequest
             'marca_id'          =>'exists:App\Models\Marca,id',
             'codigo'            =>'required|min:2|max:10|unique:biens',
             'serial'            =>'required|min:1|max:20',
-            'monto'             =>'required|min:1|max:20'
+            'monto'             =>'required|min:1|max:10'
         ];
     }
 }
